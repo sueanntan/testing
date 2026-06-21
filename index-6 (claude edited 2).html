@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+  <meta http-equiv="Pragma" content="no-cache"/>
+  <meta http-equiv="Expires" content="0"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="format-detection" content="telephone=no"/>
+  <meta name="description" content="You are invited to Megan's Twenty-ONEderland — A Very Important Tea Date. Sunday, 26 July 2026, 1:30 PM."/>
+  <title>Megan's Twenty-ONEderland</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Montserrat:wght@300;400;500;600&family=Parisienne&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body {
+      background: #FAF6F0; color: #3a2e28;
+      font-family: 'Montserrat', sans-serif; font-weight: 400;
+      line-height: 1.6; overflow-x: hidden; min-height: 100vh;
+    }
+    :root { --gold:#D9B56D; --ink:#3a2e28; --muted:#b8a090; --soft:#7a6a5a; }
+
+    /* Selective user-select — NOT on body, NOT on interactive elements */
+    .section-eyebrow,.section-heading,.detail-label,.detail-value,.detail-note,
+    .tagline,.cover-eyebrow,.cover-name,.cover-title,.cover-subtitle,.cover-cta,
+    .dress-heading,.bday-note,.dress-sep-text,.team-card-name,.team-card-hint,
+    .whimsy-note,.rsvp-subtitle,.attend-btn-label,.attend-btn-sub,.footer-stamp,
+    .closing-heading,.closing-body,.closing-see-you,.quote-text,.success-title,
+    .success-body,.decline-title,.decline-body,.impossible-title,.impossible-footer,
+    .card-title,.card-body,.venue-name,.venue-address,.venue-level-note {
+      -webkit-user-select: none; user-select: none;
+    }
+
+    .frame-corners { position:absolute; top:0; left:0; right:0; bottom:0; width:100%; height:100%; pointer-events:none; }
+    .section { padding:60px 28px; position:relative; }
+    .section + .section { border-top:0.5px solid rgba(217,181,109,0.22); }
+
+    /* COVER */
+    #cover {
+      min-height:100svh; min-height:-webkit-fill-available;
+      display:flex; flex-direction:column; align-items:center; justify-content:center;
+      text-align:center; padding:56px 32px 48px;
+      padding-top:max(56px,env(safe-area-inset-top,56px));
+      padding-bottom:max(48px,env(safe-area-inset-bottom,48px));
+    }
+    .cover-eyebrow { font-family:'Montserrat',sans-serif; font-size:10px; font-weight:600; letter-spacing:5px; color:var(--gold); text-transform:uppercase; margin-bottom:22px; }
+    .cover-teacup { margin-bottom:20px; opacity:0.72; }
+    .cover-name { font-family:'Cormorant Garamond',serif; font-size:54px; font-weight:300; font-style:italic; color:#c48a8a; line-height:1; margin-bottom:2px; display:block; }
+    .cover-title { font-family:'Cormorant Garamond',serif; font-size:34px; font-weight:600; color:var(--ink); letter-spacing:2.5px; text-transform:uppercase; line-height:1.05; margin-bottom:18px; display:block; }
+    .cover-subtitle { font-family:'Parisienne',cursive; font-size:24px; color:#9ab8d4; margin-bottom:36px; }
+    .deco-row { display:flex; align-items:center; justify-content:center; gap:14px; margin-bottom:30px; }
+    .deco-rule { width:56px; height:0.5px; background:var(--gold); opacity:0.55; }
+    .cover-cta { font-family:'Montserrat',sans-serif; font-size:9px; letter-spacing:5px; color:var(--muted); text-transform:uppercase; margin-bottom:6px; }
+    .cover-arrow { display:block; color:var(--gold); font-size:22px; animation:floatArrow 2.2s ease-in-out infinite; }
+    @keyframes floatArrow { 0%,100%{transform:translateY(0)} 50%{transform:translateY(7px)} }
+    @media (prefers-reduced-motion:reduce) { .cover-arrow{animation:none} }
+
+    .section-eyebrow { display:block; font-family:'Montserrat',sans-serif; font-size:9px; font-weight:600; letter-spacing:5px; text-transform:uppercase; color:var(--gold); text-align:center; margin-bottom:22px; }
+    .section-heading { font-family:'Cormorant Garamond',serif; font-size:38px; font-weight:300; font-style:italic; color:var(--ink); text-align:center; line-height:1.2; margin-bottom:36px; }
+    .dot-divider { display:flex; align-items:center; justify-content:center; gap:10px; margin:24px 0; }
+    .detail-block { text-align:center; margin-bottom:22px; }
+    .detail-label { display:block; font-family:'Montserrat',sans-serif; font-size:9px; font-weight:600; letter-spacing:4px; text-transform:uppercase; color:var(--muted); margin-bottom:5px; }
+    .detail-value { font-family:'Cormorant Garamond',serif; font-size:24px; font-weight:400; color:var(--ink); }
+    .detail-note { display:block; font-family:'Montserrat',sans-serif; font-size:11px; font-style:italic; color:var(--muted); margin-top:3px; }
+
+    .venue-box { border:0.5px solid rgba(217,181,109,0.45); border-radius:10px; padding:18px 22px 14px; text-align:center; background:#fff; }
+    .venue-name { font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:600; color:var(--ink); display:block; margin-bottom:4px; }
+    .venue-address { font-family:'Cormorant Garamond',serif; font-size:17px; font-style:italic; color:var(--soft); display:block; margin-bottom:10px; line-height:1.45; }
+    .venue-level-note { font-family:'Montserrat',sans-serif; font-size:10px; font-weight:500; letter-spacing:1.5px; color:var(--muted); display:block; margin-bottom:14px; }
+    .map-btn { display:inline-flex; align-items:center; gap:7px; padding:10px 20px; border:0.5px solid rgba(217,181,109,0.55); border-radius:50px; background:rgba(217,181,109,0.1); font-family:'Montserrat',sans-serif; font-size:10px; font-weight:600; letter-spacing:2px; text-transform:uppercase; color:var(--soft); text-decoration:none; touch-action:manipulation; }
+    .tagline { font-family:'Cormorant Garamond',serif; font-size:18px; font-style:italic; color:#9ab8d4; text-align:center; margin:28px 0; }
+    .stars { display:flex; align-items:center; justify-content:center; gap:10px; margin:16px 0; }
+
+    .dress-section { border:0.5px solid rgba(217,181,109,0.32); border-radius:14px; padding:28px 22px 22px; background:#faf8f5; margin-top:8px; }
+    .dress-heading { font-family:'Montserrat',sans-serif; font-size:9px; font-weight:600; letter-spacing:5px; text-transform:uppercase; color:var(--gold); text-align:center; display:block; margin-bottom:18px; }
+    .bday-note { font-family:'Cormorant Garamond',serif; font-size:15px; font-style:italic; color:#c48a8a; text-align:center; margin-bottom:20px; }
+    .dress-separator { margin:0 0 16px; display:flex; align-items:center; gap:12px; }
+    .dress-sep-line { flex:1; height:0.5px; background:rgba(217,181,109,0.3); }
+    .dress-sep-text { font-family:'Montserrat',sans-serif; font-size:9px; font-weight:600; letter-spacing:4px; text-transform:uppercase; color:var(--muted); white-space:nowrap; }
+    .guest-teams { display:flex; flex-direction:column; gap:10px; }
+    .team-card { border-radius:11px; padding:15px 18px; display:flex; align-items:center; gap:16px; border:0.5px solid transparent; }
+    .team-card.yellow { background:rgba(246,232,168,0.38); border-color:rgba(217,181,109,0.38); }
+    .team-card.blue   { background:rgba(207,229,246,0.38); border-color:rgba(154,184,212,0.38); }
+    .team-card-name { font-family:'Cormorant Garamond',serif; font-size:18px; font-weight:600; color:var(--ink); display:block; line-height:1.1; margin-bottom:2px; }
+    .team-card-hint { font-family:'Montserrat',sans-serif; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--muted); font-weight:500; }
+    .whimsy-note { font-family:'Cormorant Garamond',serif; font-size:15px; font-style:italic; color:var(--muted); text-align:center; margin-top:18px; line-height:1.65; }
+
+    #impossible { background:#FAF6F0; }
+    .impossible-title { font-family:'Cormorant Garamond',serif; font-size:28px; font-weight:300; font-style:italic; color:var(--ink); text-align:center; line-height:1.25; margin-bottom:32px; }
+    .impossible-cards { display:flex; flex-direction:column; gap:14px; }
+    .imp-card { border:0.5px solid rgba(217,181,109,0.32); border-radius:12px; padding:20px 22px; background:#fff; }
+    .card-title { font-family:'Cormorant Garamond',serif; font-size:17px; font-weight:600; color:var(--ink); display:block; margin-bottom:8px; line-height:1.2; }
+    .card-body { font-family:'Cormorant Garamond',serif; font-size:15px; font-style:italic; color:var(--soft); line-height:1.75; }
+    .impossible-footer { font-family:'Montserrat',sans-serif; font-size:11px; font-weight:500; color:var(--muted); text-align:center; margin-top:28px; line-height:1.8; letter-spacing:0.3px; }
+
+    /* RSVP — all interactive elements are <a> tags for iOS Safari reliability */
+    #rsvp { background:#f7f4f0; }
+    .rsvp-subtitle { font-family:'Montserrat',sans-serif; font-size:12px; color:var(--muted); text-align:center; letter-spacing:0.4px; line-height:1.7; margin-bottom:32px; }
+
+    .attend-btn {
+      display:flex; align-items:center; gap:14px; width:100%; padding:20px;
+      border-radius:11px; border:0.5px solid rgba(217,181,109,0.38);
+      background:#fff; margin-bottom:12px; text-decoration:none; cursor:pointer;
+      touch-action:manipulation; -webkit-tap-highlight-color:rgba(217,181,109,0.12);
+    }
+    .attend-btn.selected { border-color:var(--gold); background:#fffef9; box-shadow:0 0 0 2px rgba(217,181,109,0.2); }
+    .attend-btn-label { font-family:'Cormorant Garamond',serif; font-size:18px; font-weight:600; color:var(--ink); display:block; line-height:1.1; margin-bottom:2px; }
+    .attend-btn-sub { font-family:'Montserrat',sans-serif; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--muted); }
+
+    /* Shared panel/form styles */
+    .form-panel { display:none; margin-top:28px; }
+    .form-panel.visible { display:block; }
+    .form-q { margin-bottom:26px; }
+    .form-q-num { display:block; font-family:'Montserrat',sans-serif; font-size:9px; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-bottom:5px; }
+    .form-q-label { display:block; font-family:'Cormorant Garamond',serif; font-size:17px; font-style:italic; color:var(--ink); line-height:1.45; margin-bottom:11px; }
+    .inv-input { width:100%; border:0.5px solid rgba(217,181,109,0.5); border-radius:9px; padding:14px 16px; font-family:'Cormorant Garamond',serif; font-size:17px; background:#fff; color:var(--ink); outline:none; -webkit-appearance:none; appearance:none; }
+    .inv-input:focus { border-color:var(--gold); }
+    .inv-input::-webkit-input-placeholder { color:#c4b5a8; font-style:italic; }
+    .inv-input::placeholder { color:#c4b5a8; font-style:italic; }
+    textarea.inv-input { resize:vertical; min-height:80px; }
+    .radio-group { display:flex; flex-direction:column; gap:9px; }
+    .radio-opt { display:flex; align-items:center; gap:13px; padding:14px 16px; border-radius:9px; border:0.5px solid rgba(217,181,109,0.3); cursor:pointer; background:#fff; touch-action:manipulation; }
+    .radio-opt.sel { border-color:var(--gold); background:rgba(246,232,168,0.2); }
+    .radio-opt input[type="radio"] { width:20px; height:20px; accent-color:var(--gold); flex-shrink:0; touch-action:manipulation; }
+    .radio-opt-text { font-family:'Cormorant Garamond',serif; font-size:17px; color:var(--ink); }
+    .photo-zone { border:0.5px dashed rgba(217,181,109,0.5); border-radius:9px; padding:22px; text-align:center; background:#fff; cursor:pointer; touch-action:manipulation; }
+    .photo-zone-hint { font-family:'Montserrat',sans-serif; font-size:10px; letter-spacing:3px; text-transform:uppercase; color:#c4b5a8; font-weight:500; }
+    .photo-zone-name { display:block; font-family:'Cormorant Garamond',serif; font-size:15px; font-style:italic; color:var(--soft); margin-top:6px; }
+
+    /* Submit — <a> tag */
+    .submit-btn { display:block; width:100%; padding:18px; border:0.5px solid var(--gold); border-radius:11px; background:rgba(217,181,109,0.12); font-family:'Cormorant Garamond',serif; font-size:20px; font-style:italic; color:var(--ink); text-align:center; text-decoration:none; margin-top:10px; cursor:pointer; touch-action:manipulation; -webkit-tap-highlight-color:rgba(217,181,109,0.15); }
+
+    /* SUCCESS — attending */
+    .success-card { display:none; text-align:center; padding:32px 24px; border:0.5px solid rgba(217,181,109,0.4); border-radius:13px; background:rgba(246,232,168,0.15); margin-top:20px; }
+    .success-card.visible { display:block; }
+    .success-icon-row { margin-bottom:14px; }
+    .success-title { font-family:'Cormorant Garamond',serif; font-size:26px; font-style:italic; color:var(--ink); margin-bottom:10px; }
+    .success-body { font-family:'Montserrat',sans-serif; font-size:12px; font-weight:500; color:#6a5c52; line-height:1.8; letter-spacing:0.4px; }
+
+    /* DECLINE FORM — "lost" guests get a real form */
+    .decline-form-panel { display:none; margin-top:28px; }
+    .decline-form-panel.visible { display:block; }
+
+    /* DECLINE CONFIRMATION — shown after decline form submit */
+    .decline-card { display:none; text-align:center; padding:36px 24px; border:0.5px solid rgba(154,184,212,0.45); border-radius:13px; background:rgba(207,229,246,0.1); margin-top:16px; }
+    .decline-card.visible { display:block; }
+    .decline-title { font-family:'Cormorant Garamond',serif; font-size:24px; font-style:italic; color:var(--ink); margin-bottom:14px; line-height:1.3; }
+    .decline-body { font-family:'Cormorant Garamond',serif; font-size:16px; font-style:italic; color:var(--soft); line-height:1.85; margin-bottom:24px; }
+    .decline-close-btn { display:inline-block; padding:13px 30px; border:0.5px solid rgba(154,184,212,0.55); border-radius:50px; background:rgba(207,229,246,0.18); font-family:'Montserrat',sans-serif; font-size:10px; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:var(--soft); text-decoration:none; touch-action:manipulation; }
+
+    /* CLOSING */
+    #closing { display:none; text-align:center; padding:60px 32px 56px; }
+    #closing.visible { display:block; }
+    .closing-heading { font-family:'Cormorant Garamond',serif; font-size:32px; font-weight:300; font-style:italic; color:var(--ink); margin-bottom:28px; }
+    .closing-body { font-family:'Cormorant Garamond',serif; font-size:18px; font-style:italic; color:var(--soft); line-height:1.95; margin-bottom:12px; }
+    .closing-see-you { font-family:'Cormorant Garamond',serif; font-size:22px; font-style:italic; color:var(--ink); margin-bottom:36px; }
+    .quote-block { border-top:0.5px solid rgba(217,181,109,0.35); border-bottom:0.5px solid rgba(217,181,109,0.35); padding:22px 8px; margin:0 0 28px; }
+    .quote-text { font-family:'Parisienne',cursive; font-size:21px; color:#9ab8d4; line-height:1.55; }
+    .footer-stamp { font-family:'Montserrat',sans-serif; font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--muted); }
+
+    /* Reset native button chrome so <button> elements match the <a> styling exactly */
+    button.attend-btn, button.submit-btn, button.decline-close-btn, button.map-btn {
+      font: inherit; color: inherit; text-align: inherit; appearance: none; -webkit-appearance: none;
+    }
+
+    .icon-svg { flex-shrink:0; display:block; }
+    .field-error { border-color:#c48a8a !important; }
+    .error-msg { display:none; font-family:'Montserrat',sans-serif; font-size:11px; color:#c48a8a; margin-top:5px; letter-spacing:0.3px; }
+    .error-msg.visible { display:block; }
+  </style>
+</head>
+<body>
+
+<!-- ═══ COVER ═══════════════════════════════════════ -->
+<section id="cover" class="section">
+  <svg class="frame-corners" viewBox="0 0 100 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M 1 22 L 1 1 L 22 1"   vector-effect="non-scaling-stroke" stroke="#D9B56D" stroke-width="0.5" fill="none" opacity="0.55"/>
+    <path d="M 78 1 L 99 1 L 99 22" vector-effect="non-scaling-stroke" stroke="#D9B56D" stroke-width="0.5" fill="none" opacity="0.55"/>
+    <path d="M 1 78 L 1 99 L 22 99" vector-effect="non-scaling-stroke" stroke="#D9B56D" stroke-width="0.5" fill="none" opacity="0.55"/>
+    <path d="M 78 99 L 99 99 L 99 78" vector-effect="non-scaling-stroke" stroke="#D9B56D" stroke-width="0.5" fill="none" opacity="0.55"/>
+    <circle cx="1"  cy="1"  r="0.7" fill="#D9B56D" opacity="0.45"/>
+    <circle cx="99" cy="1"  r="0.7" fill="#D9B56D" opacity="0.45"/>
+    <circle cx="1"  cy="99" r="0.7" fill="#D9B56D" opacity="0.45"/>
+    <circle cx="99" cy="99" r="0.7" fill="#D9B56D" opacity="0.45"/>
+  </svg>
+  <span class="cover-eyebrow">You are invited</span>
+  <svg class="cover-teacup" width="68" height="60" viewBox="0 0 68 60" fill="none" aria-hidden="true">
+    <ellipse cx="32" cy="50" rx="26" ry="6" stroke="#D9B56D" stroke-width="0.8" fill="rgba(244,198,215,0.12)"/>
+    <path d="M 8 26 Q 7 50 32 50 Q 57 50 56 26 Z" stroke="#D9B56D" stroke-width="0.8" fill="rgba(244,198,215,0.15)"/>
+    <ellipse cx="32" cy="26" rx="24" ry="6" stroke="#D9B56D" stroke-width="0.8" fill="rgba(255,255,255,0.32)"/>
+    <path d="M 56 30 Q 68 30 68 40 Q 68 50 56 46" stroke="#D9B56D" stroke-width="0.8" fill="none"/>
+    <path d="M 24 26 Q 22 14 26 8 Q 28 14 24 20" stroke="#c4b5a8" stroke-width="0.7" fill="none" stroke-linecap="round" opacity="0.65"/>
+    <path d="M 32 26 Q 30 12 34 4 Q 36 12 32 18" stroke="#c4b5a8" stroke-width="0.7" fill="none" stroke-linecap="round" opacity="0.65"/>
+    <path d="M 40 26 Q 38 14 42 8 Q 44 14 40 20" stroke="#c4b5a8" stroke-width="0.7" fill="none" stroke-linecap="round" opacity="0.65"/>
+    <circle cx="32" cy="38" r="2.5" fill="none" stroke="#D9B56D" stroke-width="0.5" opacity="0.5"/>
+    <circle cx="32" cy="38" r="1" fill="#D9B56D" opacity="0.4"/>
+  </svg>
+  <h1>
+    <span class="cover-name">Megan&rsquo;s</span><br>
+    <span class="cover-title">Twenty&ndash;ONEderland</span>
+  </h1>
+  <p class="cover-subtitle">A Very Important Tea Date</p>
+  <div class="deco-row">
+    <div class="deco-rule"></div>
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <circle cx="12" cy="12" r="11" stroke="#D9B56D" stroke-width="0.7"/>
+      <circle cx="12" cy="12" r="9"  stroke="#D9B56D" stroke-width="0.4" opacity="0.4"/>
+      <line x1="12" y1="12" x2="12"   y2="5"    stroke="#D9B56D" stroke-width="1.1" stroke-linecap="round"/>
+      <line x1="12" y1="12" x2="16.5" y2="14.5" stroke="#D9B56D" stroke-width="0.9" stroke-linecap="round"/>
+      <circle cx="12" cy="12" r="1.2" fill="#D9B56D"/>
+      <line x1="12" y1="2"  x2="12" y2="4"  stroke="#D9B56D" stroke-width="0.6" opacity="0.5"/>
+      <line x1="22" y1="12" x2="20" y2="12" stroke="#D9B56D" stroke-width="0.6" opacity="0.5"/>
+      <line x1="12" y1="22" x2="12" y2="20" stroke="#D9B56D" stroke-width="0.6" opacity="0.5"/>
+      <line x1="2"  y1="12" x2="4"  y2="12" stroke="#D9B56D" stroke-width="0.6" opacity="0.5"/>
+    </svg>
+    <svg width="18" height="26" viewBox="0 0 18 26" fill="none" aria-hidden="true">
+      <rect x="0.5" y="0.5" width="17" height="25" rx="2.5" stroke="#D9B56D" stroke-width="0.6" fill="rgba(255,255,255,0.45)"/>
+      <path d="M 9 15 C 9 15 5 12 5 9.5 C 5 7.5 7 6.5 9 9 C 11 6.5 13 7.5 13 9.5 C 13 12 9 15 9 15 Z" fill="#c48a8a" opacity="0.65"/>
+      <text x="3" y="9" font-size="7" fill="#D9B56D" opacity="0.7" font-family="Georgia,serif" font-weight="bold">A</text>
+    </svg>
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+      <path d="M 7 1 L 8.2 5.2 L 13 5.2 L 9.4 7.8 L 10.6 12 L 7 9.4 L 3.4 12 L 4.6 7.8 L 1 5.2 L 5.8 5.2 Z" stroke="#D9B56D" stroke-width="0.6" fill="rgba(217,181,109,0.25)"/>
+    </svg>
+    <div class="deco-rule"></div>
+  </div>
+  <p class="cover-cta">Down the rabbit hole</p>
+  <span class="cover-arrow">&#8595;</span>
+</section>
+
+
+<!-- ═══ EVENT DETAILS ════════════════════════════════ -->
+<section id="details" class="section">
+  <span class="section-eyebrow">The Invitation</span>
+  <h2 class="section-heading">Sunday, 26 July 2026</h2>
+  <div class="detail-block">
+    <span class="detail-label">Time</span>
+    <span class="detail-value">1:30 PM &ndash; 5:00 PM</span>
+    <span class="detail-note">Please arrive by 1:30 PM &middot; The rabbit waits for no one.</span>
+  </div>
+  <div class="dot-divider">
+    <svg width="6" height="6" viewBox="0 0 6 6" aria-hidden="true"><circle cx="3" cy="3" r="2.5" fill="#D9B56D" opacity="0.5"/></svg>
+    <svg width="6" height="6" viewBox="0 0 6 6" aria-hidden="true"><circle cx="3" cy="3" r="2.5" fill="#D9B56D" opacity="0.5"/></svg>
+    <svg width="6" height="6" viewBox="0 0 6 6" aria-hidden="true"><circle cx="3" cy="3" r="2.5" fill="#D9B56D" opacity="0.5"/></svg>
+  </div>
+  <div class="detail-block">
+    <span class="detail-label">Venue</span>
+    <div class="venue-box">
+      <span class="venue-name">All In One (Bendemeer)</span>
+      <span class="venue-address">42 Foch Road, Level 2<br>Singapore 209269</span>
+      <span class="venue-level-note">Please note: The venue is located on Level 2.</span>
+      <a class="map-btn" href="https://maps.google.com/?q=42+Foch+Road+Singapore+209269" target="_blank" rel="noopener noreferrer" aria-label="View venue on Google Maps">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+          <circle cx="6" cy="5" r="2" stroke="#7a6a5a" stroke-width="0.8"/>
+          <path d="M 6 1 Q 10 1 10 5 Q 10 8 6 11 Q 2 8 2 5 Q 2 1 6 1 Z" stroke="#7a6a5a" stroke-width="0.7" fill="none"/>
+        </svg>
+        View Location
+      </a>
+    </div>
+  </div>
+  <p class="tagline">Tea, games, music &amp; impossible things await.</p>
+  <div class="stars">
+    <svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M5 1 L6 4 L9 4 L6.5 6 L7.5 9 L5 7 L2.5 9 L3.5 6 L1 4 L4 4 Z" fill="#D9B56D" opacity="0.45"/></svg>
+    <svg width="8"  height="8"  viewBox="0 0 8 8"   aria-hidden="true"><circle cx="4" cy="4" r="1.5" fill="#D9B56D" opacity="0.35"/></svg>
+    <svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M5 1 L6 4 L9 4 L6.5 6 L7.5 9 L5 7 L2.5 9 L3.5 6 L1 4 L4 4 Z" fill="#D9B56D" opacity="0.45"/></svg>
+    <svg width="8"  height="8"  viewBox="0 0 8 8"   aria-hidden="true"><circle cx="4" cy="4" r="1.5" fill="#D9B56D" opacity="0.35"/></svg>
+    <svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M5 1 L6 4 L9 4 L6.5 6 L7.5 9 L5 7 L2.5 9 L3.5 6 L1 4 L4 4 Z" fill="#D9B56D" opacity="0.45"/></svg>
+  </div>
+  <div class="dress-section">
+    <span class="dress-heading">Dress Code</span>
+    <p class="bday-note">The birthday girl will be wearing blush pink.</p>
+    <div class="dress-separator">
+      <div class="dress-sep-line"></div>
+      <span class="dress-sep-text">Guests &mdash; choose your side</span>
+      <div class="dress-sep-line"></div>
+    </div>
+    <div class="guest-teams">
+      <div class="team-card yellow">
+        <svg width="30" height="30" viewBox="0 0 30 30" fill="none" class="icon-svg" aria-hidden="true">
+          <circle cx="15" cy="15" r="7" fill="rgba(246,232,168,0.8)" stroke="#D9B56D" stroke-width="0.8"/>
+          <line x1="15" y1="4"  x2="15" y2="7"    stroke="#D9B56D" stroke-width="0.8" stroke-linecap="round"/>
+          <line x1="15" y1="23" x2="15" y2="26"   stroke="#D9B56D" stroke-width="0.8" stroke-linecap="round"/>
+          <line x1="4"  y1="15" x2="7"  y2="15"   stroke="#D9B56D" stroke-width="0.8" stroke-linecap="round"/>
+          <line x1="23" y1="15" x2="26" y2="15"   stroke="#D9B56D" stroke-width="0.8" stroke-linecap="round"/>
+          <line x1="7.9"  y1="7.9"  x2="10"   y2="10"   stroke="#D9B56D" stroke-width="0.8" stroke-linecap="round"/>
+          <line x1="20"   y1="20"   x2="22.1"  y2="22.1" stroke="#D9B56D" stroke-width="0.8" stroke-linecap="round"/>
+          <line x1="22.1" y1="7.9"  x2="20"   y2="10"   stroke="#D9B56D" stroke-width="0.8" stroke-linecap="round"/>
+          <line x1="10"   y1="20"   x2="7.9"  y2="22.1" stroke="#D9B56D" stroke-width="0.8" stroke-linecap="round"/>
+        </svg>
+        <div><span class="team-card-name">Team Mad Hatter</span><span class="team-card-hint">Butter Yellow</span></div>
+      </div>
+      <div class="team-card blue">
+        <svg width="30" height="30" viewBox="0 0 30 30" fill="none" class="icon-svg" aria-hidden="true">
+          <path d="M 7 20 Q 4 20 4 17 Q 4 14 7.5 14 Q 7.5 10 12 10 Q 15 10 16.5 12 Q 18 10 21 11 Q 25 12 25 16 Q 26 16 27 17.5 Q 27 20 25 20 Z" fill="rgba(207,229,246,0.75)" stroke="#9ab8d4" stroke-width="0.7"/>
+        </svg>
+        <div><span class="team-card-name">Team Wonderland</span><span class="team-card-hint">Powder Blue</span></div>
+      </div>
+    </div>
+    <p class="whimsy-note">Choose wisely.<br>Your team may determine your fate.</p>
+  </div>
+</section>
+
+
+<!-- ═══ IMPOSSIBLE THINGS ════════════════════════════ -->
+<section id="impossible" class="section">
+  <span class="section-eyebrow">What Awaits</span>
+  <h2 class="impossible-title">A Few Impossible Things Await&hellip;</h2>
+  <div class="impossible-cards">
+    <div class="imp-card">
+      <span class="card-title">&#x1F570; Arrival Begins at 1:30 PM</span>
+      <p class="card-body">Wonderland opens promptly, and a few impossible things begin early.<br>The rabbit waits for no one.</p>
+    </div>
+    <div class="imp-card">
+      <span class="card-title">&#x1F3AF; Games &amp; Trials</span>
+      <p class="card-body">Expect playful challenges, unexpected moments, and a few opportunities to earn glory.</p>
+    </div>
+    <div class="imp-card">
+      <span class="card-title">&#x1F48C; Secrets &amp; Keepsakes</span>
+      <p class="card-body">You may leave behind something for Future Megan.</p>
+    </div>
+    <div class="imp-card">
+      <span class="card-title">&#x1F382; Cake &amp; Celebration</span>
+      <p class="card-body">Stay until the end &mdash; the sweetest chapter comes later.</p>
+    </div>
+    <div class="imp-card">
+      <span class="card-title">&#x1F52E; One Final Mystery</span>
+      <p class="card-body">Every guest leaves Wonderland with something.</p>
+    </div>
+  </div>
+  <p class="impossible-footer">No preparation needed.<br>Just come curious, comfortable, and ready for tea.</p>
+</section>
+
+
+<!-- ═══ RSVP ════════════════════════════════════════ -->
+<section id="rsvp" class="section">
+  <span class="section-eyebrow">An Important Matter</span>
+  <h2 class="section-heading">Accept Your<br>Summons</h2>
+  <p class="rsvp-subtitle">Confirm your attendance and enter Wonderland.</p>
+
+  <!--
+    Attend buttons are real <button type="button"> elements with listeners
+    attached via addEventListener (see script at bottom). This avoids issues
+    with javascript:void(0) hrefs being blocked in some mobile in-app
+    browsers (Instagram/Facebook/WhatsApp/TikTok webviews), which was the
+    previous pattern here.
+  -->
+  <button type="button" class="attend-btn" id="btn-hatter" aria-pressed="false">
+    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" class="icon-svg" aria-hidden="true">
+      <circle cx="14" cy="14" r="6.5" fill="rgba(246,232,168,0.8)" stroke="#D9B56D" stroke-width="0.8"/>
+      <line x1="14" y1="3.5"  x2="14"   y2="6.5"  stroke="#D9B56D" stroke-width="0.9" stroke-linecap="round"/>
+      <line x1="14" y1="21.5" x2="14"   y2="24.5" stroke="#D9B56D" stroke-width="0.9" stroke-linecap="round"/>
+      <line x1="3.5"  y1="14" x2="6.5"  y2="14"   stroke="#D9B56D" stroke-width="0.9" stroke-linecap="round"/>
+      <line x1="21.5" y1="14" x2="24.5" y2="14"   stroke="#D9B56D" stroke-width="0.9" stroke-linecap="round"/>
+      <line x1="7.3"  y1="7.3"  x2="9.4"  y2="9.4"  stroke="#D9B56D" stroke-width="0.9" stroke-linecap="round"/>
+      <line x1="18.6" y1="18.6" x2="20.7" y2="20.7" stroke="#D9B56D" stroke-width="0.9" stroke-linecap="round"/>
+      <line x1="20.7" y1="7.3"  x2="18.6" y2="9.4"  stroke="#D9B56D" stroke-width="0.9" stroke-linecap="round"/>
+      <line x1="9.4"  y1="18.6" x2="7.3"  y2="20.7" stroke="#D9B56D" stroke-width="0.9" stroke-linecap="round"/>
+    </svg>
+    <div>
+      <span class="attend-btn-label">Join Team Mad Hatter</span>
+      <span class="attend-btn-sub">Butter Yellow &middot; I shall attend</span>
+    </div>
+  </button>
+
+  <button type="button" class="attend-btn" id="btn-wonderland" aria-pressed="false">
+    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" class="icon-svg" aria-hidden="true">
+      <path d="M 6 21 Q 3 21 3 18 Q 3 15 6.5 15 Q 6.5 11 11 11 Q 14 11 15.5 13 Q 17 11 20 12 Q 24 13 24 17 Q 25 17 26 18.5 Q 26 21 24 21 Z" fill="rgba(207,229,246,0.75)" stroke="#9ab8d4" stroke-width="0.7"/>
+    </svg>
+    <div>
+      <span class="attend-btn-label">Join Team Wonderland</span>
+      <span class="attend-btn-sub">Powder Blue &middot; I shall attend</span>
+    </div>
+  </button>
+
+  <button type="button" class="attend-btn" id="btn-lost" aria-pressed="false">
+    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" class="icon-svg" aria-hidden="true">
+      <ellipse cx="13" cy="22" rx="10" ry="3" stroke="#b8a090" stroke-width="0.7"/>
+      <path d="M 4 12 Q 3.5 22 13 22 Q 22.5 22 22 12 Z" stroke="#b8a090" stroke-width="0.7" fill="rgba(255,255,255,0.25)"/>
+      <ellipse cx="13" cy="12" rx="9" ry="3" stroke="#b8a090" stroke-width="0.7"/>
+      <path d="M 22 14 Q 27 14 27 18 Q 27 22 22 20" stroke="#b8a090" stroke-width="0.7" fill="none"/>
+    </svg>
+    <div>
+      <span class="attend-btn-label">Regretfully lost in the rabbit hole</span>
+      <span class="attend-btn-sub">I cannot attend</span>
+    </div>
+  </button>
+
+  <!-- ── DECLINE FORM (shown when "lost" selected) ── -->
+  <div class="decline-form-panel" id="decline-form-panel" aria-live="polite">
+    <div class="dot-divider" style="margin-top:28px">
+      <svg width="5" height="5" viewBox="0 0 5 5" aria-hidden="true"><circle cx="2.5" cy="2.5" r="2" fill="#D9B56D" opacity="0.5"/></svg>
+      <svg width="5" height="5" viewBox="0 0 5 5" aria-hidden="true"><circle cx="2.5" cy="2.5" r="2" fill="#D9B56D" opacity="0.5"/></svg>
+      <svg width="5" height="5" viewBox="0 0 5 5" aria-hidden="true"><circle cx="2.5" cy="2.5" r="2" fill="#D9B56D" opacity="0.5"/></svg>
+    </div>
+    <div class="form-q">
+      <span class="form-q-num">01</span>
+      <label class="form-q-label" for="d-name">Name</label>
+      <input class="inv-input" id="d-name" type="text" autocomplete="name" placeholder="Enter your name" aria-required="true"/>
+      <span class="error-msg" id="d-name-err">Please enter your name.</span>
+    </div>
+    <div class="form-q">
+      <span class="form-q-num">02 &mdash; Optional</span>
+      <label class="form-q-label" for="d-message">A message for Megan</label>
+      <textarea class="inv-input" id="d-message" placeholder="Leave a note for the birthday girl&#x2026;"></textarea>
+    </div>
+    <button type="button" class="submit-btn" id="decline-submit-btn">
+      Send My Regards &rarr;
+    </button>
+    <!-- DECLINE CONFIRMATION -->
+    <div class="decline-card" id="decline-card" role="status">
+      <svg width="48" height="48" viewBox="0 0 48 48" fill="none" style="margin:0 auto 16px;display:block" aria-hidden="true">
+        <path d="M 10 34 Q 5 34 5 29 Q 5 24 10 24 Q 10 18 18 18 Q 23 18 25 22 Q 27 18 32 19 Q 40 21 40 28 Q 41 28 43 30 Q 43 34 40 34 Z" fill="rgba(207,229,246,0.55)" stroke="#9ab8d4" stroke-width="0.8"/>
+      </svg>
+      <p class="decline-title">The Rabbit Hole Will Miss You</p>
+      <p class="decline-body">
+        Thank you for letting us know.<br><br>
+        Though you will not be joining us in Wonderland this time, your invitation remains treasured.<br><br>
+        Until our paths cross again.
+      </p>
+      <button type="button" class="decline-close-btn" id="decline-close-btn">Close Invitation</button>
+    </div>
+  </div>
+
+  <!-- ── ATTENDING RSVP FORM ── -->
+  <div class="form-panel" id="form-panel" aria-live="polite">
+    <div class="dot-divider" style="margin-top:28px">
+      <svg width="5" height="5" viewBox="0 0 5 5" aria-hidden="true"><circle cx="2.5" cy="2.5" r="2" fill="#D9B56D" opacity="0.5"/></svg>
+      <svg width="5" height="5" viewBox="0 0 5 5" aria-hidden="true"><circle cx="2.5" cy="2.5" r="2" fill="#D9B56D" opacity="0.5"/></svg>
+      <svg width="5" height="5" viewBox="0 0 5 5" aria-hidden="true"><circle cx="2.5" cy="2.5" r="2" fill="#D9B56D" opacity="0.5"/></svg>
+    </div>
+    <div class="form-q">
+      <span class="form-q-num">01</span>
+      <label class="form-q-label" for="q-name">Name <span style="font-size:13px;font-style:normal;color:#b8a090;font-family:'Montserrat',sans-serif;font-weight:400">(For logistical planning)</span></label>
+      <input class="inv-input" id="q-name" type="text" autocomplete="name" placeholder="Enter your name" aria-required="true"/>
+      <span class="error-msg" id="q-name-err">Please enter your name.</span>
+    </div>
+    <div class="form-q">
+      <span class="form-q-num">02</span>
+      <span class="form-q-label" id="q-team-lbl">Choose your side</span>
+      <div class="radio-group" role="radiogroup" aria-labelledby="q-team-lbl">
+        <label class="radio-opt" id="ro-hatter">
+          <input type="radio" name="team" value="hatter" onchange="highlightRadio(this)"/>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" class="icon-svg" aria-hidden="true">
+            <circle cx="10" cy="10" r="5" fill="rgba(246,232,168,0.8)" stroke="#D9B56D" stroke-width="0.7"/>
+            <line x1="10" y1="2"    x2="10" y2="4.5" stroke="#D9B56D" stroke-width="0.8" stroke-linecap="round"/>
+            <line x1="10" y1="15.5" x2="10" y2="18"  stroke="#D9B56D" stroke-width="0.8" stroke-linecap="round"/>
+            <line x1="2"  y1="10"   x2="4.5" y2="10" stroke="#D9B56D" stroke-width="0.8" stroke-linecap="round"/>
+            <line x1="15.5" y1="10" x2="18"  y2="10" stroke="#D9B56D" stroke-width="0.8" stroke-linecap="round"/>
+          </svg>
+          <span class="radio-opt-text">Team Mad Hatter</span>
+        </label>
+        <label class="radio-opt" id="ro-wonderland">
+          <input type="radio" name="team" value="wonderland" onchange="highlightRadio(this)"/>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" class="icon-svg" aria-hidden="true">
+            <path d="M 3 15 Q 1 15 1 12.5 Q 1 10 4 10 Q 4 7 8 7 Q 11 7 12 9 Q 13.5 7 16 8 Q 19 9 19 12 Q 19.5 12 20 13 Q 20 15 18.5 15 Z" fill="rgba(207,229,246,0.8)" stroke="#9ab8d4" stroke-width="0.6"/>
+          </svg>
+          <span class="radio-opt-text">Team Wonderland</span>
+        </label>
+      </div>
+      <span class="error-msg" id="q-team-err">Please choose your team.</span>
+    </div>
+    <div class="form-q">
+      <span class="form-q-num">03</span>
+      <label class="form-q-label" for="q-diet">Any dietary requirements?</label>
+      <input class="inv-input" id="q-diet" type="text" autocomplete="off" placeholder="Vegetarian, allergies, preferences&#x2026;"/>
+    </div>
+    <div class="form-q">
+      <span class="form-q-num">04</span>
+      <span class="form-q-label" id="q-karaoke-lbl">Will you sing karaoke if called?</span>
+      <div class="radio-group" role="radiogroup" aria-labelledby="q-karaoke-lbl">
+        <label class="radio-opt"><input type="radio" name="karaoke" value="Absolutely" onchange="highlightRadio(this)"/><span class="radio-opt-text">Absolutely</span></label>
+        <label class="radio-opt"><input type="radio" name="karaoke" value="Only in groups" onchange="highlightRadio(this)"/><span class="radio-opt-text">Only in groups</span></label>
+        <label class="radio-opt"><input type="radio" name="karaoke" value="I will support emotionally" onchange="highlightRadio(this)"/><span class="radio-opt-text">I will support emotionally</span></label>
+      </div>
+    </div>
+    <div class="form-q">
+      <span class="form-q-num">05</span>
+      <label class="form-q-label" for="q-word">One word that reminds you of Megan</label>
+      <input class="inv-input" id="q-word" type="text" autocomplete="off" placeholder="Just one&#x2026;"/>
+    </div>
+    <div class="form-q">
+      <span class="form-q-num">06</span>
+      <label class="form-q-label" for="q-predict">Predict Megan at 31</label>
+      <textarea class="inv-input" id="q-predict" placeholder="Your vision of her future self&#x2026;"></textarea>
+    </div>
+    <div class="form-q">
+      <span class="form-q-num">07 &mdash; Optional</span>
+      <span class="form-q-label">Upload a favourite photo with Megan</span>
+      <div class="photo-zone" id="photo-zone" role="button" tabindex="0" aria-label="Tap to upload a photo">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" style="margin:0 auto 8px;display:block;opacity:0.45" aria-hidden="true">
+          <rect x="2" y="8" width="24" height="17" rx="3" stroke="#b8a090" stroke-width="0.8"/>
+          <circle cx="14" cy="17" r="5" stroke="#b8a090" stroke-width="0.8"/>
+          <circle cx="14" cy="17" r="2.5" fill="rgba(207,229,246,0.5)" stroke="#b8a090" stroke-width="0.6"/>
+          <path d="M 10 8 L 11.5 5 L 16.5 5 L 18 8" stroke="#b8a090" stroke-width="0.7" fill="none" stroke-linejoin="round"/>
+          <circle cx="22" cy="11" r="1" fill="#b8a090" opacity="0.6"/>
+        </svg>
+        <span class="photo-zone-hint">Tap to choose a photo</span>
+        <span class="photo-zone-name" id="photo-name"></span>
+      </div>
+      <input type="file" id="photo-input" accept="image/*" style="display:none" aria-label="Upload photo with Megan"/>
+    </div>
+    <button type="button" class="submit-btn" id="submit-btn">
+      Accept My Summons &rarr;
+    </button>
+    <div class="success-card" id="success-card" role="status">
+      <div class="success-icon-row">
+        <svg width="80" height="24" viewBox="0 0 80 24" fill="none" style="margin:0 auto" aria-hidden="true">
+          <path d="M12 2 L13.8 7.5 L20 7.5 L15 11 L16.8 16.5 L12 13 L7.2 16.5 L9 11 L4 7.5 L10.2 7.5 Z" fill="#D9B56D" opacity="0.55"/>
+          <path d="M40 2 L41.8 7.5 L48 7.5 L43 11 L44.8 16.5 L40 13 L35.2 16.5 L37 11 L32 7.5 L38.2 7.5 Z" fill="#D9B56D" opacity="0.7"/>
+          <path d="M68 2 L69.8 7.5 L76 7.5 L71 11 L72.8 16.5 L68 13 L63.2 16.5 L65 11 L60 7.5 L66.2 7.5 Z" fill="#D9B56D" opacity="0.55"/>
+        </svg>
+      </div>
+      <p class="success-title">Your summons has been received.</p>
+      <p class="success-body">We shall save your place at the table.<br>See you in Wonderland, Sunday 26 July.<br><br>All In One (Bendemeer) &middot; Level 2 &middot; 1:30 PM</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ CLOSING (attending guests only) ═════════════ -->
+<section id="closing" class="section">
+  <div class="dot-divider">
+    <svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M5 1 L6 4 L9 4 L6.5 6 L7.5 9 L5 7 L2.5 9 L3.5 6 L1 4 L4 4 Z" fill="#D9B56D" opacity="0.45"/></svg>
+    <svg width="7"  height="7"  viewBox="0 0 7 7"   aria-hidden="true"><circle cx="3.5" cy="3.5" r="2" fill="#D9B56D" opacity="0.35"/></svg>
+    <svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M5 1 L6 4 L9 4 L6.5 6 L7.5 9 L5 7 L2.5 9 L3.5 6 L1 4 L4 4 Z" fill="#D9B56D" opacity="0.45"/></svg>
+  </div>
+  <h2 class="closing-heading">Before You Leave&hellip;</h2>
+  <svg width="90" height="56" viewBox="0 0 90 56" fill="none" style="margin:0 auto 26px;display:block;opacity:0.62" aria-hidden="true">
+    <path d="M 45 10 Q 32 2 18 6 Q 32 10 45 28 Q 58 10 72 6 Q 58 2 45 10 Z" stroke="#D9B56D" stroke-width="0.8" fill="rgba(217,181,109,0.12)"/>
+    <line x1="45" y1="28" x2="45" y2="50" stroke="#D9B56D" stroke-width="0.8"/>
+    <path d="M 34 50 Q 45 43 56 50" stroke="#D9B56D" stroke-width="0.8" fill="none"/>
+    <circle cx="45" cy="10" r="3" fill="#D9B56D" opacity="0.5"/>
+  </svg>
+  <p class="closing-body">Thank you for accepting your summons.<br><br>You are warmly invited to spend one afternoon eating pastries, making memories, and believing in impossible things.</p>
+  <p class="closing-see-you">See you in Wonderland.</p>
+  <div class="quote-block">
+    <p class="quote-text">&ldquo;You&rsquo;re entirely bonkers.<br>But all the best people are.&rdquo;</p>
+  </div>
+  <p class="footer-stamp">Megan&rsquo;s Twenty-ONEderland &middot; 26 July 2026</p>
+  <div class="stars" style="margin-top:14px">
+    <svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M5 1 L6 4 L9 4 L6.5 6 L7.5 9 L5 7 L2.5 9 L3.5 6 L1 4 L4 4 Z" fill="#D9B56D" opacity="0.4"/></svg>
+    <svg width="7"  height="7"  viewBox="0 0 7 7"   aria-hidden="true"><circle cx="3.5" cy="3.5" r="2" fill="#D9B56D" opacity="0.3"/></svg>
+    <svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M5 1 L6 4 L9 4 L6.5 6 L7.5 9 L5 7 L2.5 9 L3.5 6 L1 4 L4 4 Z" fill="#D9B56D" opacity="0.4"/></svg>
+  </div>
+</section>
+
+
+<script>
+(function () {
+  'use strict';
+
+  /* Photo zone + button wiring.
+     NOTE: this script tag is the last thing in <body>, so every element it
+     references already exists in the DOM by the time this code runs — no
+     need to wait for DOMContentLoaded. Relying on that event is risky here:
+     it only fires once, and in some embedded/preview rendering contexts the
+     document is already parsed (readyState 'interactive'/'complete') by the
+     time this script executes, meaning the event has already fired and a
+     freshly-added listener for it would never run, silently leaving every
+     button unwired. */
+  /* Some in-app browsers (notably Telegram's) can be unreliable about firing
+     a plain 'click' event on dynamically-bound elements. bindTap listens for
+     both 'click' and 'touchend' and guards against the handler firing twice
+     for what was really a single tap. */
+  function bindTap(el, handler) {
+    var locked = false;
+    function fire(e) {
+      if (locked) return;
+      locked = true;
+      setTimeout(function () { locked = false; }, 400);
+      handler(e);
+    }
+    el.addEventListener('touchend', function (e) {
+      e.preventDefault();
+      fire(e);
+    }, { passive: false });
+    el.addEventListener('click', fire);
+  }
+
+  function wireUpPage() {
+    var zone = document.getElementById('photo-zone');
+    var inp  = document.getElementById('photo-input');
+    if (zone && inp) {
+      bindTap(zone, function () { inp.click(); });
+      zone.addEventListener('keydown', function (e) { if (e.key==='Enter'||e.key===' ') inp.click(); });
+      inp.addEventListener('change', function () {
+        var nm = document.getElementById('photo-name');
+        if (inp.files && inp.files[0] && nm) nm.textContent = inp.files[0].name;
+      });
+    }
+
+    bindTap(document.getElementById('btn-hatter'),     function () { pickAttend('hatter'); });
+    bindTap(document.getElementById('btn-wonderland'),  function () { pickAttend('wonderland'); });
+    bindTap(document.getElementById('btn-lost'),        function () { pickAttend('lost'); });
+    bindTap(document.getElementById('decline-submit-btn'), function () { handleDeclineSubmit(); });
+    bindTap(document.getElementById('decline-close-btn'),  function () { closeInvitation(); });
+    bindTap(document.getElementById('submit-btn'),      function () { handleSubmit(); });
+  }
+
+  var currentTeam = null;
+
+  window.pickAttend = function (team) {
+    currentTeam = team;
+
+    /* Update button states */
+    ['hatter','wonderland','lost'].forEach(function (t) {
+      var b = document.getElementById('btn-'+t);
+      b.classList.remove('selected');
+      b.setAttribute('aria-pressed','false');
+    });
+    document.getElementById('btn-'+team).classList.add('selected');
+    document.getElementById('btn-'+team).setAttribute('aria-pressed','true');
+
+    var attendForm   = document.getElementById('form-panel');
+    var declineForm  = document.getElementById('decline-form-panel');
+    var closing      = document.getElementById('closing');
+
+    /* Hide all panels first */
+    attendForm.classList.remove('visible');
+    declineForm.classList.remove('visible');
+    closing.classList.remove('visible');
+
+    if (team === 'lost') {
+      declineForm.classList.add('visible');
+      setTimeout(function () { declineForm.scrollIntoView({behavior:'smooth',block:'start'}); }, 60);
+    } else {
+      attendForm.classList.add('visible');
+      /* Pre-tick matching team radio */
+      document.querySelectorAll('input[name="team"]').forEach(function (r) {
+        if (r.value === team) {
+          r.checked = true;
+          document.querySelectorAll('#form-panel .radio-group label').forEach(function (l) { l.classList.remove('sel'); });
+          var lbl = r.closest('label');
+          if (lbl) lbl.classList.add('sel');
+        }
+      });
+      setTimeout(function () { attendForm.scrollIntoView({behavior:'smooth',block:'start'}); }, 60);
+    }
+  };
+
+  window.closeInvitation = function () {
+    window.scrollTo({top:0,behavior:'smooth'});
+    setTimeout(function () {
+      document.getElementById('decline-form-panel').classList.remove('visible');
+      document.getElementById('decline-card').classList.remove('visible');
+      document.getElementById('decline-submit-btn').style.display = '';
+      document.getElementById('d-name').value = '';
+      document.getElementById('d-message').value = '';
+      ['hatter','wonderland','lost'].forEach(function (t) {
+        var b = document.getElementById('btn-'+t);
+        b.classList.remove('selected');
+        b.setAttribute('aria-pressed','false');
+      });
+      currentTeam = null;
+    }, 500);
+  };
+
+  window.highlightRadio = function (input) {
+    var group = input.closest('.radio-group');
+    if (!group) return;
+    group.querySelectorAll('label').forEach(function (l) { l.classList.remove('sel'); });
+    var lbl = input.closest('label');
+    if (lbl) lbl.classList.add('sel');
+  };
+
+  /* ── DECLINE FORM SUBMIT ──────────────────────────────── */
+  window.handleDeclineSubmit = function () {
+    var nameVal = document.getElementById('d-name').value.trim();
+    var nameErr = document.getElementById('d-name-err');
+    if (!nameVal) {
+      document.getElementById('d-name').classList.add('field-error');
+      nameErr.classList.add('visible');
+      document.getElementById('d-name').scrollIntoView({behavior:'smooth',block:'center'});
+      return;
+    }
+    document.getElementById('d-name').classList.remove('field-error');
+    nameErr.classList.remove('visible');
+
+    var declineData = {
+      type:      'decline',
+      name:      nameVal,
+      message:   document.getElementById('d-message').value.trim(),
+      timestamp: new Date().toISOString()
+    };
+
+    /* Store locally */
+    try {
+      var ex = JSON.parse(localStorage.getItem('twentyonderland_rsvps') || '[]');
+      ex.push(declineData);
+      localStorage.setItem('twentyonderland_rsvps', JSON.stringify(ex));
+    } catch(e) {}
+
+    /* Send to Google Form */
+    submitDeclineToGoogleForm(declineData);
+
+    /* Show confirmation, hide submit button */
+    document.getElementById('decline-submit-btn').style.display = 'none';
+    var dc = document.getElementById('decline-card');
+    dc.classList.add('visible');
+    dc.scrollIntoView({behavior:'smooth',block:'center'});
+  };
+
+  /* ── ATTENDING FORM SUBMIT ────────────────────────────── */
+  window.handleSubmit = function () {
+    var ok = true;
+    var nameVal = document.getElementById('q-name').value.trim();
+    var nameErr = document.getElementById('q-name-err');
+    if (!nameVal) {
+      document.getElementById('q-name').classList.add('field-error');
+      nameErr.classList.add('visible'); ok = false;
+    } else {
+      document.getElementById('q-name').classList.remove('field-error');
+      nameErr.classList.remove('visible');
+    }
+    var teamVal = document.querySelector('input[name="team"]:checked');
+    var teamErr = document.getElementById('q-team-err');
+    if (!teamVal) { teamErr.classList.add('visible'); ok = false; }
+    else          { teamErr.classList.remove('visible'); }
+    if (!ok) {
+      var fe = document.querySelector('.field-error, .error-msg.visible');
+      if (fe) fe.scrollIntoView({behavior:'smooth',block:'center'});
+      return;
+    }
+
+    var responses = {
+      type:         'attending',
+      name:         nameVal,
+      team:         teamVal ? teamVal.value : '',
+      dietary:      document.getElementById('q-diet').value.trim(),
+      karaoke:      (document.querySelector('input[name="karaoke"]:checked') || {}).value || '',
+      wordForMegan: document.getElementById('q-word').value.trim(),
+      meganAt31:    document.getElementById('q-predict').value.trim(),
+      timestamp:    new Date().toISOString()
+    };
+
+    try {
+      var ex = JSON.parse(localStorage.getItem('twentyonderland_rsvps') || '[]');
+      ex.push(responses);
+      localStorage.setItem('twentyonderland_rsvps', JSON.stringify(ex));
+    } catch(e) {}
+
+    submitToGoogleForm(responses);
+
+    document.getElementById('submit-btn').style.display = 'none';
+    var sc = document.getElementById('success-card');
+    sc.classList.add('visible');
+    document.getElementById('closing').classList.add('visible');
+    sc.scrollIntoView({behavior:'smooth',block:'center'});
+  };
+
+  function submitToGoogleForm(data) {
+    /* Replace YOUR_FORM_ID and entry IDs — see README */
+    var url = 'https://docs.google.com/forms/d/e/YOUR_FORM_ID/formResponse';
+    var p = new URLSearchParams();
+    p.append('entry.ENTRY_ID_NAME',    data.name);
+    p.append('entry.ENTRY_ID_TEAM',    data.team);
+    p.append('entry.ENTRY_ID_DIET',    data.dietary);
+    p.append('entry.ENTRY_ID_KARAOKE', data.karaoke);
+    p.append('entry.ENTRY_ID_WORD',    data.wordForMegan);
+    p.append('entry.ENTRY_ID_MEGAN31', data.meganAt31);
+    fetch(url, {method:'POST',mode:'no-cors',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:p.toString()}).catch(function(){});
+  }
+
+  function submitDeclineToGoogleForm(data) {
+    /* Replace YOUR_DECLINE_FORM_ID and entry IDs — see README */
+    var url = 'https://docs.google.com/forms/d/e/YOUR_DECLINE_FORM_ID/formResponse';
+    var p = new URLSearchParams();
+    p.append('entry.ENTRY_ID_DECLINE_NAME',    data.name);
+    p.append('entry.ENTRY_ID_DECLINE_MESSAGE', data.message);
+    fetch(url, {method:'POST',mode:'no-cors',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:p.toString()}).catch(function(){});
+  }
+
+  /* Wire everything up now that every function above is defined. Guard for
+     readyState purely as a defensive measure — wireUpPage() touches only
+     elements that already exist this far down in the document. */
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', wireUpPage);
+  } else {
+    wireUpPage();
+  }
+
+}());
+</script>
+</body>
+</html>
